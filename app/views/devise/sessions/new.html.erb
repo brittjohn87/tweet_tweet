@@ -1,26 +1,42 @@
-<h2>Log in</h2>
+<center><h1>WELCOME TO TWEET TWEET</h1></center>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-group">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="container">
+  <center><div class="col-md-6">
+    <br />
+    <img src="https://d1l9wtg77iuzz5.cloudfront.net/assets/3434/96782/original.png?1417554708">
+  </div></center>
+ 
+  <div class="col-md-6">
+    <br />
+    <h2>Log in</h2>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-group">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, class: 'form-control' %>
     </div>
-  <% end -%>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div class="form-group">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+      <% end -%>
+
+      <div class="actions">
+      <%= f.submit "Log in" %>
+      </div>
+      <% end %>
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
-<% end %>
+</div>
 
-<%= render "devise/shared/links" %>
+
+
+
+
