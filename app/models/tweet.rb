@@ -5,7 +5,9 @@ class Tweet < ApplicationRecord
 	has_many :tweet_tags
 	has_many :tags, through: :tweet_tags
 
-	before_validation :link_check, on: :create
+  paginates_per 5
+
+  before_validation :link_check, on: :create
 
 	validates :message, presence: true, length: {maximum: 140, too_long: "A tweet is only 140 max. Everybody knows that!"}, on: :create
 

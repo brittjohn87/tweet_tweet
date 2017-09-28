@@ -6,6 +6,11 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link href="https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Ceviche+One" rel="stylesheet">
+
   </head>
 
   <body>
@@ -63,15 +68,20 @@
     <div class="col-md-3">
       <div class="panel panel-info">
         <center><div class="panel-body">
-          <%= image_tag @current_user.avatar.thumb, class: "img-circle" %>
+          <%= image_tag current_user.avatar.thumb, class: "img-circle" %>
           <br />
-          <strong><%= @current_user.name %></strong>
+          <strong class="profile_info"><%= current_user.name %></strong>
           <br />
-          <strong><i class="fa fa-user" aria-hidden="true"></i>@<%= @current_user.username %></strong>
+          <strong class="profile_info"><i class="fa fa-user" aria-hidden="true"></i> @<%= current_user.username %></strong>
           <br />
-          <strong><i class="fa fa-map-marker" aria-hidden="true"></i> <%= @current_user.location %></strong>
+          <strong class="profile_info"><i class="fa fa-map-marker" aria-hidden="true"> </i> <%= current_user.location %></strong>
           <br />
-          <strong><i class="fa fa-book" aria-hidden="true"></i><%= @current_user.bio %></strong>
+          <strong class="profile_info"><i class="fa fa-book" aria-hidden="true"></i> <%= current_user.bio %></strong>
+          <br />
+          <strong class="profile_info">Following: <%= link_to current_user.following.length, following_path(id: current_user.id) %></strong>
+          <br />
+          <strong class="profile_info">Followers: <%= link_to current_user_followers(current_user.id), followers_path(id: current_user.id) %></strong>
+
                 </div></center>
       </div>
     </div>
@@ -88,6 +98,10 @@
     <div class="col-md-3">
       <div class="panel panel-info">
         <div class="panel-body">
+            <center><h1>What's Going On?</h1></center>
+             <% Tag.all.each do |tag| %>
+             <%= link_to tag.phrase, tag_tweets_path(id: tag.id) %>
+             <% end %>
 
         </div>
       </div>

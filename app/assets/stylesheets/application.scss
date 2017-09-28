@@ -17,3 +17,35 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
  @import "font-awesome";
+
+ .messages {
+ 	font-family: 'Ceviche One', sans-serif;
+ 	font-size: x-large;
+ }
+
+.navbar-header {
+	font-family: 'Sedgwick Ave Display', cursive;
+}
+
+li {
+	font-family: 'Sedgwick Ave Display', cursive;
+	font-size: medium;
+}
+
+.profile_info {
+	font-family: 'Sedgwick Ave Display', cursive;
+	font-size: large;
+}
+
+.message_header {
+	font-family: 'Sedgwick Ave Display', cursive;
+	font-size: medium;
+}
+
+h3 {
+	font-family: 'Sedgwick Ave Display', cursive;
+}
+
+h1 {
+	font-family: 'Sedgwick Ave Display', cursive;
+}

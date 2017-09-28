@@ -2,29 +2,38 @@
 
 <h1>Tweets</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Message</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @tweets.each do |tweet| %>
-      <tr>
-        <td><%= tweet.message.html_safe %></td>
-        <td><%= link_to tweet.user.username, show_user_path(id: tweet.user.id) %></td>
-        <td><%= image_tag tweet.user.avatar.thumb, class: "img-circle" %></td>
-        <td><%= link_to 'Show', tweet %></td>
-        <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-        <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+  
+<% @tweets.each do |tweet| %>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <i class="pull-right">
+      <%= image_tag tweet.user.avatar.thumb, class: "img-circle" %>
+    </i> 
+    <h1 class="panel-title">
+      <p><%= link_to tweet.user.username, show_user_path(id: tweet.user.id) %> • <%= time_ago_in_words(tweet.created_at) if Time.now - tweet.created_at < 86400 %><%= tweet.created_at.strftime('%b%e') if Time.now - tweet.created_at > 86400 %></p></h1>
+  </div>
+
+      <div class="panel-body">
+        <p><%= tweet.message.html_safe %></p>
+        <br />
+        <br />
+        <%= link_to 'Show', tweet, class: "btn btn-info" %>
+        <% if current_user.id == tweet.user_id  %>
+        <%= link_to 'Edit', edit_tweet_path(tweet), class: "btn btn-warning" %>
+        <%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+        <% end %>
+      </div>
+</div>
+<% end %>  
+
+
 
 <br>
 
-<%= link_to 'New Tweet', new_tweet_path %>
+<div class="pull-right"><div class="pagination"><%= paginate @tweets %></div></div>
+
+
+
+   
