@@ -4,8 +4,8 @@
     <title>TweetTweet</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
 
     <link href="https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display" rel="stylesheet">
 
@@ -37,7 +37,7 @@
 
           <li><%= link_to "All Users", all_users_path %></li>
 
-          <li><%= link_to "Sign In", new_user_session_path %></li>
+          <li><%= link_to fa_icon("Sign In", text: "Sign In", class: "fa fa-user"), new_user_session_path %></li>
 
       
 
@@ -86,7 +86,7 @@
       </div>
     </div>
 
-
+ 
     <div class="col-md-6">
       <div class="panel panel-info">
         <div class="panel-body">
@@ -94,6 +94,7 @@
         </div>
       </div>
     </div> 
+
 
     <div class="col-md-3">
       <div class="panel panel-info">
